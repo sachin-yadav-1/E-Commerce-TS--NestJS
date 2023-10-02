@@ -1,0 +1,28 @@
+{
+    "_id": "b11fdf8a-32b8-484d-b0bd-43363a05c976",
+    "colName": "Users",
+    "created": "2023-10-02T16:15:06.637Z",
+    "sortNum": 10000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5ed58fae-4c99-4668-a3c4-46af74102465",
+            "colId": "b11fdf8a-32b8-484d-b0bd-43363a05c976",
+            "containerId": "",
+            "name": "CreateNewUser",
+            "url": "{{HOST}}/users",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-10-02T16:15:19.943Z",
+            "modified": "2023-10-02T16:22:26.152Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"firstName\": \"sachin\",\n  \"lastName\": \"yadav\",\n  \"email\": \"sachin@gmail.com\",\n  \"password\": \"Sachin@123\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
