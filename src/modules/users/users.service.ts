@@ -6,6 +6,7 @@ import { encryptPass } from "../../helpers/passwordHelpers";
 import { CreateUserDto } from "./dtos/createUser.dto";
 import { SearchUsersDto } from "./dtos/searchUsers.dto";
 import { UpdateUserDto } from "./dtos/updateUser.dto";
+import { IPaginatedUsers } from "./interfaces/paginatedUsers.interface";
 import IUser from "./interfaces/user.interface";
 
 @Injectable()
@@ -50,7 +51,7 @@ export class UsersService {
     return user;
   }
 
-  async searchUsers(filter: SearchUsersDto): Promise<IUser[]> {
+  async searchUsers(filter: SearchUsersDto): Promise<IPaginatedUsers> {
     const matchFilter = {};
     const or = [];
 
@@ -70,8 +71,7 @@ export class UsersService {
     const limit = filter.limit || 10;
     const skip = (page - 1) * limit;
 
-    const users = await this.user.aggregate([{ $match: matchFilter }, { ...addPagination(page, skip, limit) }]);
-
+    const users = (await this.user.aggregate([{ $match: matchFilter }, { ...addPagination(page, skip, limit) }])) as any;
     return users;
   }
 
