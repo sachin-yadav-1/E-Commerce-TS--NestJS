@@ -1,0 +1,54 @@
+{
+    "_id": "e748408b-7c5d-4653-9b30-4f234ccde7d8",
+    "colName": "Auth",
+    "created": "2023-10-03T15:46:39.825Z",
+    "sortNum": 5000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f41c4174-ae03-42d9-a0f8-3be7742c22e3",
+            "colId": "e748408b-7c5d-4653-9b30-4f234ccde7d8",
+            "containerId": "",
+            "name": "Signup",
+            "url": "{{HOST}}/auth/signup",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-10-03T15:46:52.307Z",
+            "modified": "2023-10-03T16:29:01.929Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"firstName\": \"rahul\",\n  \"lastName\": \"kumar\",\n  \"email\": \"rahul.kumar@gmail.com\",\n  \"password\": \"Sac#192\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "61d39b38-7938-4e9a-a4cd-db1f7b5618a2",
+            "colId": "e748408b-7c5d-4653-9b30-4f234ccde7d8",
+            "containerId": "",
+            "name": "Login",
+            "url": "{{HOST}}/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-10-03T15:50:58.397Z",
+            "modified": "2023-10-03T15:52:31.719Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"sachin.y4dav@gmail.com\",\n  \"password\": \"Sac#192\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.token",
+                    "action": "setto",
+                    "value": "{{TOKEN}}"
+                }
+            ]
+        }
+    ]
+}

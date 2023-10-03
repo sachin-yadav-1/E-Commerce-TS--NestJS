@@ -1,4 +1,4 @@
-import { MongooseModuleOptions } from '@nestjs/mongoose';
+import { MongooseModuleOptions } from "@nestjs/mongoose";
 
 export default (): {
   mongoConfig: MongooseModuleOptions;

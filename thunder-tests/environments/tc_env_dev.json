@@ -9,6 +9,11 @@
         {
             "name": "HOST",
             "value": "http://127.0.0.1:8080"
+        },
+        {
+            "name": "TOKEN",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhY2hpbi55NGRhdkBnbWFpbC5jb20iLCJpYXQiOjE2OTYzNDg2MTksImV4cCI6MTY5NjQzNTAxOX0.IPTRAqde1ptwENegE9aP6-9b_4Zk52RykzU39HgwZyo",
+            "secret": true
         }
     ]
 }

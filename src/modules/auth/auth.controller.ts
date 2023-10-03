@@ -17,6 +17,7 @@ export class AuthController {
   }
 
   @Post("signup")
+  @Serialize(SignedInUserDto)
   async signupUser(@Body() data: SignupUserDto): Promise<any> {
     return await this.authService.signupUser(data);
   }

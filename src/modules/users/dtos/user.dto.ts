@@ -1,4 +1,7 @@
 import { Expose, Type } from "class-transformer";
+import { PaginateMetaDataDto } from "../../../common/dtos/paginateMetadata.dto";
+import { PaginateMetaData } from "../../../common/types/paginateMetadata.type";
+import IUser from "../interfaces/user.interface";
 
 export class UserDto {
   @Expose()
@@ -12,6 +15,9 @@ export class UserDto {
   lastName: string;
 
   @Expose()
+  role: string;
+
+  @Expose()
   email: string;
 
   @Expose()
@@ -19,4 +25,14 @@ export class UserDto {
 
   @Expose()
   cc: string;
+}
+
+export class PaginateUserDto {
+  @Expose()
+  @Type(() => PaginateMetaDataDto)
+  metadata: PaginateMetaData;
+
+  @Expose()
+  @Type(() => UserDto)
+  data: IUser[];
 }

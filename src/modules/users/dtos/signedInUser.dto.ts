@@ -12,6 +12,9 @@ export class SignedInUserDto {
   lastName: string;
 
   @Expose()
+  role: string;
+
+  @Expose()
   email: string;
 
   @Expose()

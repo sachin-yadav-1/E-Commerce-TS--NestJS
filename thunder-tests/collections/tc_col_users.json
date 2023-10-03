@@ -23,6 +23,26 @@
                 "form": []
             },
             "tests": []
+        },
+        {
+            "_id": "2f642923-68f0-428d-a0fb-375d703838a0",
+            "colId": "b11fdf8a-32b8-484d-b0bd-43363a05c976",
+            "containerId": "",
+            "name": "Search Users",
+            "url": "{{HOST}}/users/search?limit=10",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-10-03T16:13:57.920Z",
+            "modified": "2023-10-03T16:44:07.052Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "limit",
+                    "value": "10",
+                    "isPath": false
+                }
+            ],
+            "tests": []
         }
     ]
 }
