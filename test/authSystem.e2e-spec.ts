@@ -1,6 +1,5 @@
 import { INestApplication } from "@nestjs/common";
 import { Test, TestingModule } from "@nestjs/testing";
-import { connection } from "mongoose";
 import * as request from "supertest";
 import { capitaliseString } from "../src/helpers/stringHelpers";
 import { AppModule } from "./../src/app.module";
@@ -15,10 +14,6 @@ describe("Authentication System E2E", () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
-  });
-
-  afterAll(async () => {
-    await connection.close();
   });
 
   const userEmail = "chunky.pandey@gmail.com";
