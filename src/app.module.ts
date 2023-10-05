@@ -9,6 +9,8 @@ import mongoConfig from "./config/mongoConfig";
 import { AddressesModule } from "./modules/addresses/addresses.module";
 import { AuthModule } from "./modules/auth/auth.module";
 import { UsersModule } from "./modules/users/users.module";
+import s3Config from "./config/s3Config";
+import { FileUploadService } from "./common/services/file-upload.service";
 
 @Module({
   imports: [
@@ -16,7 +18,7 @@ import { UsersModule } from "./modules/users/users.module";
       envFilePath: `.env.${process.env.NODE_ENV}`,
       cache: true,
       isGlobal: true,
-      load: [mongoConfig, jwtConfig],
+      load: [mongoConfig, jwtConfig, s3Config],
     }),
     MongooseModule.forRootAsync({
       useFactory: (configService: ConfigService) => configService.get("mongoConfig"),
@@ -29,6 +31,7 @@ import { UsersModule } from "./modules/users/users.module";
   controllers: [AppController],
   providers: [
     AppService,
+    FileUploadService,
     {
       provide: APP_PIPE,
       useValue: new ValidationPipe({ whitelist: true, transform: true }),
