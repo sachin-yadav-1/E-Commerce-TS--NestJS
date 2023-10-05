@@ -5,6 +5,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import jwtConfig from "./config/jwtConfig";
 import mongoConfig from "./config/mongoConfig";
+import { AddressesModule } from './modules/addresses/addresses.module';
 import { AuthModule } from "./modules/auth/auth.module";
 import { UsersModule } from "./modules/users/users.module";
 
@@ -22,6 +23,7 @@ import { UsersModule } from "./modules/users/users.module";
     }),
     UsersModule,
     AuthModule,
+    AddressesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
