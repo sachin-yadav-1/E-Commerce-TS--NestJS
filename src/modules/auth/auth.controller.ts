@@ -1,4 +1,5 @@
-import { Body, Controller, Post, Req, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
+import { Authorized } from "../../decorators/authorized.decorator";
 import { LocalAuthGuard } from "../../guards/localAuth.guard";
 import { Serialize } from "../../interceptors/serialize.interceptor";
 import { SignedInUserDto } from "../users/dtos/signedInUser.dto";
@@ -20,5 +21,12 @@ export class AuthController {
   @Serialize(SignedInUserDto)
   async signupUser(@Body() data: SignupUserDto): Promise<any> {
     return await this.authService.signupUser(data);
+  }
+
+  @Get("profile")
+  @Authorized()
+  @Serialize(SignedInUserDto)
+  async getCurrentlyLoggedInUser(@Req() req: any): Promise<any> {
+    return req.user;
   }
 }

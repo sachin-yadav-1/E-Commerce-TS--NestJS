@@ -12,7 +12,7 @@
         },
         {
             "name": "TOKEN",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhY2hpbi55NGRhdkBnbWFpbC5jb20iLCJpYXQiOjE2OTYzNDg2MTksImV4cCI6MTY5NjQzNTAxOX0.IPTRAqde1ptwENegE9aP6-9b_4Zk52RykzU39HgwZyo",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWMzOTYzN2I4N2YzYWViYjZhZDU5NCIsImVtYWlsIjoic2FjaGluLnk0ZGF2QGdtYWlsLmNvbSIsImlhdCI6MTY5NjUzNTA5MiwiZXhwIjoxNjk2NjIxNDkyfQ.C0GsdH2vk9fHharkrTqeOggBpyXV9gadn5WKLTi9f2Q",
             "secret": true
         }
     ]

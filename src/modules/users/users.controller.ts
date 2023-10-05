@@ -6,6 +6,7 @@ import { UpdateUserDto } from "./dtos/updateUser.dto";
 import { PaginateUserDto, UserDto } from "./dtos/user.dto";
 import IUser from "./interfaces/user.interface";
 import { UsersService } from "./users.service";
+import { IPaginatedUsers } from "./interfaces/paginatedUsers.interface";
 
 @Controller("users")
 export class UsersController {
@@ -19,7 +20,7 @@ export class UsersController {
 
   @Get("search")
   @Serialize(PaginateUserDto)
-  async searchUsers(@Query() data: SearchUsersDto): Promise<IUser[]> {
+  async searchUsers(@Query() data: SearchUsersDto): Promise<IPaginatedUsers> {
     return await this.usersService.searchUsers(data);
   }
 

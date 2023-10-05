@@ -9,7 +9,7 @@ export class AuthService {
   constructor(private readonly jwtService: JwtService, private readonly usersService: UsersService) {}
 
   async signInUser(user: IUser): Promise<any> {
-    const token = await this.jwtService.signAsync({ id: user.id, email: user.email });
+    const token = await this.jwtService.signAsync({ id: user._id, email: user.email });
     return { ...user, token };
   }
 
