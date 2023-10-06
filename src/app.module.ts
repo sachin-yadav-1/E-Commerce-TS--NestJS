@@ -12,6 +12,7 @@ import { UsersModule } from "./modules/users/users.module";
 import s3Config from "./config/s3Config";
 import { FileUploadService } from "./common/services/file-upload.service";
 import { CategoriesModule } from './modules/categories/categories.module';
+import { ProductsModule } from './modules/products/products.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { CategoriesModule } from './modules/categories/categories.module';
     AuthModule,
     AddressesModule,
     CategoriesModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [
