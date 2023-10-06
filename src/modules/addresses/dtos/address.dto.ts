@@ -35,7 +35,7 @@ export class AddressDto {
   state: string;
 
   @Expose()
-  pincode: number;
+  pincode: string;
 }
 
 export class PaginateAddressDto {

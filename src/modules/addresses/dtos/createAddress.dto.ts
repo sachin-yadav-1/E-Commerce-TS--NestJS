@@ -33,5 +33,5 @@ export class CreateAddressDto {
   state: string;
 
   @IsString()
-  pincode: number;
+  pincode: string;
 }

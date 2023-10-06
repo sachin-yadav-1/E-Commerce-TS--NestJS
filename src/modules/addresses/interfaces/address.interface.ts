@@ -10,5 +10,5 @@ export interface IAddress {
   line2: string;
   city: string;
   state: string;
-  pincode: number;
+  pincode: string;
 }

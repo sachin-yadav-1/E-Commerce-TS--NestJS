@@ -40,5 +40,5 @@ export class UpdateAddressDto {
 
   @IsString()
   @IsOptional()
-  pincode?: number;
+  pincode?: string;
 }

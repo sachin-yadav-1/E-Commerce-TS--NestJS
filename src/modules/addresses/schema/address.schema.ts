@@ -11,7 +11,7 @@ const AddressSchema = new Schema(
     line2: { type: String, default: "" },
     city: { type: String, default: "" },
     state: { type: String, default: "" },
-    pincode: { type: Number, minLength: 6, maxLength: 6, default: null },
+    pincode: { type: String, minLength: 6, maxLength: 6, default: "" },
   },
   { timestamps: true }
 );
