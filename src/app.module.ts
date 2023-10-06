@@ -11,6 +11,7 @@ import { AuthModule } from "./modules/auth/auth.module";
 import { UsersModule } from "./modules/users/users.module";
 import s3Config from "./config/s3Config";
 import { FileUploadService } from "./common/services/file-upload.service";
+import { CategoriesModule } from './modules/categories/categories.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { FileUploadService } from "./common/services/file-upload.service";
     UsersModule,
     AuthModule,
     AddressesModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
   providers: [
