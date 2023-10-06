@@ -1,0 +1,107 @@
+{
+    "_id": "9d56b68f-2c86-44f3-8f07-7b011cd5b0e0",
+    "colName": "Categories",
+    "created": "2023-10-06T15:06:25.243Z",
+    "sortNum": 20000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "b737478a-7492-4a04-afb8-a3bdfe53a414",
+            "colId": "9d56b68f-2c86-44f3-8f07-7b011cd5b0e0",
+            "containerId": "",
+            "name": "Create Category",
+            "url": "{{HOST}}/categories",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-10-06T15:06:35.767Z",
+            "modified": "2023-10-06T15:09:15.901Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Furnishing\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{TOKEN}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "01b4d1b2-3a1c-41dc-9c5a-df226908424b",
+            "colId": "9d56b68f-2c86-44f3-8f07-7b011cd5b0e0",
+            "containerId": "",
+            "name": "Get Category by ID",
+            "url": "{{HOST}}/categories/6520231f86de48c9bd273551",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-10-06T15:09:38.906Z",
+            "modified": "2023-10-06T15:09:55.001Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "81cf4a2a-9945-4301-bacb-6ba429f8bcaa",
+            "colId": "9d56b68f-2c86-44f3-8f07-7b011cd5b0e0",
+            "containerId": "",
+            "name": "Search Categories",
+            "url": "{{HOST}}/categories/search?name",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-10-06T15:10:19.584Z",
+            "modified": "2023-10-06T15:12:54.185Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "name",
+                    "value": "",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "0f857405-f789-4d2f-b5f1-986599385be8",
+            "colId": "9d56b68f-2c86-44f3-8f07-7b011cd5b0e0",
+            "containerId": "",
+            "name": "Update Category",
+            "url": "{{HOST}}/categories",
+            "method": "PATCH",
+            "sortNum": 40000,
+            "created": "2023-10-06T15:13:54.847Z",
+            "modified": "2023-10-06T15:14:45.098Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"6520231f86de48c9bd273551\",\n  \"name\": \"Home\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{TOKEN}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8307e4df-8ec3-400a-934d-9503a23600ec",
+            "colId": "9d56b68f-2c86-44f3-8f07-7b011cd5b0e0",
+            "containerId": "",
+            "name": "Delete Category",
+            "url": "{{HOST}}/categories/6520231f86de48c9bd273551",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-10-06T15:15:38.650Z",
+            "modified": "2023-10-06T15:16:07.166Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{TOKEN}}"
+            },
+            "tests": []
+        }
+    ]
+}

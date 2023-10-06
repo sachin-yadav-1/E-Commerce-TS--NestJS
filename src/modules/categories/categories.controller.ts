@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { DeleteDocumentDto } from "../../common/dtos/deleteDocument.dto";
 import { Authorized } from "../../decorators/authorized.decorator";
 import { CurrentUser } from "../../decorators/currentUser.decorator";
 import { Serialize } from "../../interceptors/serialize.interceptor";
@@ -23,12 +24,6 @@ export class CategoriesController {
     return await this.categoriesService.createNewCategory(data, authUser);
   }
 
-  @Get(":id")
-  @Serialize(CategoryDto)
-  async getCategoryByID(@Param("id") id: string): Promise<ICategory> {
-    return await this.categoriesService.getCategoryByID(id);
-  }
-
   @Get("search")
   @Serialize(PaginateCategoryDto)
   async searchCategories(@Query() data: SearchCategoriesDto): Promise<IPaginatedCategories> {
@@ -42,9 +37,15 @@ export class CategoriesController {
     return await this.categoriesService.updateCategory(data, authUser);
   }
 
+  @Get(":id")
+  @Serialize(CategoryDto)
+  async getCategoryByID(@Param("id") id: string): Promise<ICategory> {
+    return await this.categoriesService.getCategoryByID(id);
+  }
+
   @Delete(":id")
   @Authorized(UserRoles.ADMIN)
-  @Serialize(CategoryDto)
+  @Serialize(DeleteDocumentDto)
   async deleteCategory(@Param("id") id: string): Promise<{ id: string }> {
     return await this.categoriesService.deleteCategory(id);
   }

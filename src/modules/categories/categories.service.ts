@@ -61,7 +61,7 @@ export class CategoriesService {
     if (!id) throw new BadRequestException("id is required.");
 
     const category = await this.category
-      .findByIdAndUpdate(id, { ...updateData, updatedBy: authUser._id })
+      .findByIdAndUpdate(id, { ...updateData, updatedBy: authUser._id }, { new: true })
       .populate(["createdBy", "updatedBy"])
       .lean(true);
     if (!category) throw new NotFoundException("category not found.");
