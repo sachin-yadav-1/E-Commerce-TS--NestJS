@@ -9,6 +9,7 @@ const UserSchema = new Schema(
     mobile: { type: String, maxLen: 10, required: false, default: "" },
     cc: { type: String, maxlength: 4, required: false, default: "" },
     role: { type: String, enum: UserRoles, default: UserRoles.USER },
+    avatar: { type: String, default: "" },
 
     password: { type: String, default: "" },
     active: { type: Boolean, default: true },

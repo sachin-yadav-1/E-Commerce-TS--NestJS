@@ -9,6 +9,7 @@ interface IUser extends Document {
   role: string;
   password: string;
   active: boolean;
+  avatar: string;
 }
 
 export default IUser;
