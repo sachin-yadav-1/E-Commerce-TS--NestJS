@@ -6,7 +6,7 @@ export interface IProduct extends Document {
   name: string;
   desc: string;
   costPrice: number;
-  sellingPrice: number;
+  price: number;
   stock: number;
   categories: string[] | ICategory[];
   createdBy: string | IUser;

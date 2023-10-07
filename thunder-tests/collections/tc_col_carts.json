@@ -1,0 +1,46 @@
+{
+    "_id": "3a665a83-752b-41aa-a647-fb8aa5d83d30",
+    "colName": "Carts",
+    "created": "2023-10-07T18:15:28.419Z",
+    "sortNum": 40000,
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d688fdac-8f60-4da1-93ff-e24bccdb387f",
+            "colId": "3a665a83-752b-41aa-a647-fb8aa5d83d30",
+            "containerId": "",
+            "name": "GetUserCart",
+            "url": "{{HOST}}/carts/user",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-10-07T18:15:38.306Z",
+            "modified": "2023-10-07T18:51:15.871Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c0d0beee-97b6-4f3f-9b97-a877181a1516",
+            "colId": "3a665a83-752b-41aa-a647-fb8aa5d83d30",
+            "containerId": "",
+            "name": "AddItemToCart",
+            "url": "{{HOST}}/carts/item",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-10-07T18:18:11.019Z",
+            "modified": "2023-10-07T18:19:43.104Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"cart\": \"6521a0c3bee1719616dffb2a\",\n  \"product\": \"65203b2911b79d900e2c2855\",\n  \"count\": 1\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{TOKEN}}"
+            },
+            "tests": []
+        }
+    ]
+}

@@ -5,7 +5,7 @@ const ProductSchema = new Schema(
     name: { type: String, minLength: 3, required: [true, "product name is required."] },
     desc: { type: String, default: "" },
     costPrice: { type: Number, required: [true, "cost price is required."] },
-    sellingPrice: { type: Number, required: [true, "selling price is required."] },
+    price: { type: Number, required: [true, "selling price is required."] },
     stock: { type: Number, default: 10 },
     categories: [{ type: Schema.Types.ObjectId, ref: "Category" }],
     createdBy: { type: Schema.Types.ObjectId, ref: "User" },

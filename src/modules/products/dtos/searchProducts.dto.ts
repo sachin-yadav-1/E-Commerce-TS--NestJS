@@ -12,7 +12,7 @@ export class SearchProductsDto {
 
   @IsNumber()
   @Transform(({ value }) => Number(value))
-  sellingPrice: number;
+  price: number;
 
   @IsBoolean()
   @IsOptional()

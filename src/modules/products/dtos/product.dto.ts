@@ -22,7 +22,7 @@ export class ProductDto {
   costPrice: number;
 
   @Expose()
-  sellingPrice: number;
+  price: number;
 
   @Expose()
   stock: number;

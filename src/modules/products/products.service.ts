@@ -1,6 +1,8 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from "@nestjs/common";
+import { OnEvent } from "@nestjs/event-emitter";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
+import { EventTypes } from "../../common/enums/events.enum";
 import addPagination from "../../helpers/addPagination";
 import IUser from "../users/interfaces/user.interface";
 import { CreateProductDto } from "./dtos/createProduct.dto";
@@ -37,16 +39,26 @@ export class ProductsService {
     return product;
   }
 
+  @OnEvent(EventTypes["ADD_CART_ITEM.GET_PRODUCT"], { async: true, promisify: true })
+  async getProductForAddCartItem({ id }: { id: string }): Promise<IProduct> {
+    if (!id) throw new BadRequestException("id is required.");
+
+    const product = await this.product.findById(id).lean(true);
+    if (!product) throw new NotFoundException("product not found.");
+
+    return product;
+  }
+
   async searchProducts(filter: SearchProductsDto): Promise<IPaginatedProducts> {
     const matchFilter = {};
     const and = [];
 
     if (Object.keys(filter).length) {
-      if (filter.name) and.push({ name: { $regex: ".*" + filter.name + ".*", $options: "i" } });
-      if (filter.costPrice) and.push({ costPrice: { $lte: filter.costPrice } });
-      if (filter.sellingPrice) and.push({ sellingPrice: { $lte: filter.sellingPrice } });
-      if (filter.categories) and.push({ categories: { $in: filter.categories } });
+      if (filter.price) and.push({ price: { $lte: filter.price } });
       if (filter.hasOwnProperty("inStock")) and.push({ stock: { $gte: 1 } });
+      if (filter.costPrice) and.push({ costPrice: { $lte: filter.costPrice } });
+      if (filter.categories) and.push({ categories: { $in: filter.categories } });
+      if (filter.name) and.push({ name: { $regex: ".*" + filter.name + ".*", $options: "i" } });
     }
 
     if (and.length) matchFilter["$and"] = and;

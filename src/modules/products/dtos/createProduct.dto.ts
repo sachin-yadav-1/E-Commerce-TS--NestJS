@@ -18,7 +18,7 @@ export class CreateProductDto {
   @IsNumber()
   @Min(1)
   @Transform(({ value }) => Number(value))
-  sellingPrice: number;
+  price: number;
 
   @IsNumber()
   @IsOptional()
