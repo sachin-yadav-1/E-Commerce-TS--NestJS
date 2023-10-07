@@ -3,7 +3,10 @@ import { IsNumber, IsOptional, IsString } from "class-validator";
 
 export class UpdateCartItemDto {
   @IsString()
-  id: string;
+  cart: string;
+
+  @IsString()
+  itemId: string;
 
   @IsNumber()
   @IsOptional()
