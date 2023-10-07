@@ -41,8 +41,6 @@ export class ProductsService {
 
   @OnEvent(EventTypes["ADD_CART_ITEM.GET_PRODUCT"], { async: true, promisify: true })
   async getProductForAddCartItem({ id }: { id: string }): Promise<IProduct> {
-    if (!id) throw new BadRequestException("id is required.");
-
     const product = await this.product.findById(id).lean(true);
     if (!product) throw new NotFoundException("product not found.");
 
