@@ -1,18 +1,19 @@
-import { Module, ValidationPipe } from "@nestjs/common";
+import { MiddlewareConsumer, Module, NestModule, ValidationPipe } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { APP_PIPE } from "@nestjs/core";
 import { MongooseModule } from "@nestjs/mongoose";
+import * as cookieParser from "cookie-parser";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { FileUploadService } from "./common/services/file-upload.service";
 import jwtConfig from "./config/jwtConfig";
 import mongoConfig from "./config/mongoConfig";
+import s3Config from "./config/s3Config";
 import { AddressesModule } from "./modules/addresses/addresses.module";
 import { AuthModule } from "./modules/auth/auth.module";
+import { CategoriesModule } from "./modules/categories/categories.module";
+import { ProductsModule } from "./modules/products/products.module";
 import { UsersModule } from "./modules/users/users.module";
-import s3Config from "./config/s3Config";
-import { FileUploadService } from "./common/services/file-upload.service";
-import { CategoriesModule } from './modules/categories/categories.module';
-import { ProductsModule } from './modules/products/products.module';
 
 @Module({
   imports: [
@@ -42,4 +43,8 @@ import { ProductsModule } from './modules/products/products.module';
     },
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(cookieParser()).forRoutes("*");
+  }
+}
