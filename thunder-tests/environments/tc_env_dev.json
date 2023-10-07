@@ -12,8 +12,7 @@
         },
         {
             "name": "TOKEN",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MWMzOTYzN2I4N2YzYWViYjZhZDU5NCIsImVtYWlsIjoic2FjaGluLnk0ZGF2QGdtYWlsLmNvbSIsImlhdCI6MTY5NjYwNDg0NywiZXhwIjoxNjk2NjkxMjQ3fQ.EebCiQY0Ns-Or7a0zB6Do6TM2FB0LH4tY3ROotBdNa8",
-            "secret": true
+            "value": ""
         }
     ]
 }

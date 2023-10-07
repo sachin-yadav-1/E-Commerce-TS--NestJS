@@ -33,18 +33,18 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-10-03T15:50:58.397Z",
-            "modified": "2023-10-03T15:52:31.719Z",
+            "modified": "2023-10-07T16:29:55.230Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"email\": \"sachin.y4dav@gmail.com\",\n  \"password\": \"Sac#192\"\n}",
+                "raw": "{\n  \"email\": \"srk@gmail.com\",\n  \"password\": \"Sac#192\"\n}",
                 "form": []
             },
             "tests": [
                 {
                     "type": "set-env-var",
-                    "custom": "json.token",
+                    "custom": "cookie.token",
                     "action": "setto",
                     "value": "{{TOKEN}}"
                 }

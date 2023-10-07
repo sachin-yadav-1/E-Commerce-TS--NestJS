@@ -1,9 +1,10 @@
 import { Body, Controller, Get, Post, Req, Res, UseGuards } from "@nestjs/common";
+import { Response } from "express";
 import { Authorized } from "../../decorators/authorized.decorator";
 import { GoogleAuthGuard } from "../../guards/googleAuth.guard";
 import { LocalAuthGuard } from "../../guards/localAuth.guard";
 import { Serialize } from "../../interceptors/serialize.interceptor";
-import { SignedInUserDto } from "../users/dtos/signedInUser.dto";
+import { UserDto } from "../users/dtos/user.dto";
 import { AuthService } from "./auth.service";
 import { SignupUserDto } from "./dtos/signupUser.dto";
 
@@ -13,15 +14,19 @@ export class AuthController {
 
   @Post("login")
   @UseGuards(LocalAuthGuard)
-  @Serialize(SignedInUserDto)
-  async login(@Req() req: any): Promise<any> {
-    return await this.authService.signInUser(req.user);
+  @Serialize(UserDto)
+  async login(@Req() req: any, @Res() res: Response): Promise<any> {
+    const { token, ...user } = await this.authService.signInUser(req.user);
+    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: false });
+    res.status(200).send(user);
   }
 
   @Post("signup")
-  @Serialize(SignedInUserDto)
-  async signupUser(@Body() data: SignupUserDto): Promise<any> {
-    return await this.authService.signupUser(data);
+  @Serialize(UserDto)
+  async signupUser(@Body() data: SignupUserDto, @Res() res: Response): Promise<any> {
+    const { token, ...user } = await this.authService.signupUser(data);
+    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: false });
+    res.status(201).send(user);
   }
 
   @Get("google")
@@ -31,13 +36,14 @@ export class AuthController {
   @Get("google/callback")
   @UseGuards(GoogleAuthGuard)
   async googleOAuthHandler(@Req() req: any, @Res({ passthrough: true }) res: any): Promise<any> {
-    const resp = await this.authService.loginWithGoogle(req.user);
+    const { token } = await this.authService.loginWithGoogle(req.user);
+    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: false });
     res.status(200).redirect(`http://localhost:3000/logged-in`);
   }
 
   @Get("profile")
   @Authorized()
-  @Serialize(SignedInUserDto)
+  @Serialize(UserDto)
   async getCurrentlyLoggedInUser(@Req() req: any): Promise<any> {
     return req.user;
   }
