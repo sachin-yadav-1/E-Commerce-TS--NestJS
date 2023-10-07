@@ -17,4 +17,9 @@ export class AuthService {
     const user = await this.usersService.createNewUser(data);
     return await this.signInUser(user);
   }
+
+  async loginWithGoogle(data: any): Promise<any> {
+    const user = await this.usersService.createOAuthUser(data);
+    return await this.signInUser(user);
+  }
 }

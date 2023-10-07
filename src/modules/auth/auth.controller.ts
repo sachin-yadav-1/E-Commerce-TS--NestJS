@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, Res, UseGuards } from "@nestjs/common";
 import { Authorized } from "../../decorators/authorized.decorator";
+import { GoogleAuthGuard } from "../../guards/googleAuth.guard";
 import { LocalAuthGuard } from "../../guards/localAuth.guard";
 import { Serialize } from "../../interceptors/serialize.interceptor";
 import { SignedInUserDto } from "../users/dtos/signedInUser.dto";
@@ -21,6 +22,17 @@ export class AuthController {
   @Serialize(SignedInUserDto)
   async signupUser(@Body() data: SignupUserDto): Promise<any> {
     return await this.authService.signupUser(data);
+  }
+
+  @Get("google")
+  @UseGuards(GoogleAuthGuard)
+  async googleAuth() {}
+
+  @Get("google/callback")
+  @UseGuards(GoogleAuthGuard)
+  async googleOAuthHandler(@Req() req: any, @Res({ passthrough: true }) res: any): Promise<any> {
+    const resp = await this.authService.loginWithGoogle(req.user);
+    res.status(200).redirect(`http://localhost:3000/logged-in`);
   }
 
   @Get("profile")

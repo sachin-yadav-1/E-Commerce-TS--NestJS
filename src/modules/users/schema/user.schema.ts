@@ -1,5 +1,6 @@
 import { Schema } from "mongoose";
 import { UserRoles } from "../enums/userRoles.enum";
+import { LoginProvider } from "../enums/loginProviders.enum";
 
 const UserSchema = new Schema(
   {
@@ -13,6 +14,7 @@ const UserSchema = new Schema(
 
     password: { type: String, default: "" },
     active: { type: Boolean, default: true },
+    provider: { type: String, enum: LoginProvider, default: LoginProvider.NONE },
   },
   { timestamps: true }
 );

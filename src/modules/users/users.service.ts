@@ -3,6 +3,7 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import addPagination from "../../helpers/addPagination";
 import { encryptPass } from "../../helpers/passwordHelpers";
+import { CreateOAuthUserDto } from "./dtos/createOAuthUser.dto";
 import { CreateUserDto } from "./dtos/createUser.dto";
 import { SearchUsersDto } from "./dtos/searchUsers.dto";
 import { UpdateUserDto } from "./dtos/updateUser.dto";
@@ -23,7 +24,15 @@ export class UsersService {
     return (await this.user.create(data)).toObject();
   }
 
-  async checkExistingUser(data: { email: string; mobile: string }): Promise<boolean> {
+  async createOAuthUser(data: CreateOAuthUserDto): Promise<IUser> {
+    if (await this.checkExistingUser({ email: data.email })) {
+      return await this.user.findOne({ email: data.email });
+    }
+
+    return (await this.user.create(data)).toObject();
+  }
+
+  async checkExistingUser(data: { email: string; mobile?: string }): Promise<boolean> {
     const $or = [];
     if (data.email) $or.push({ email: data.email });
     if (data.mobile) $or.push({ mobile: data.mobile });
