@@ -16,6 +16,7 @@ import { CartsModule } from "./modules/carts/carts.module";
 import { CategoriesModule } from "./modules/categories/categories.module";
 import { ProductsModule } from "./modules/products/products.module";
 import { UsersModule } from "./modules/users/users.module";
+import { BannersModule } from './modules/banners/banners.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { UsersModule } from "./modules/users/users.module";
     CategoriesModule,
     ProductsModule,
     CartsModule,
+    BannersModule,
   ],
   controllers: [AppController],
   providers: [
