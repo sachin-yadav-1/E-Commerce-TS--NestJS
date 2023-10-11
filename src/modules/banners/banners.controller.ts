@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
 import { DeleteDocumentDto } from "../../common/dtos/deleteDocument.dto";
 import { Authorized } from "../../decorators/authorized.decorator";
 import { CurrentUser } from "../../decorators/currentUser.decorator";
@@ -6,7 +6,7 @@ import { Serialize } from "../../interceptors/serialize.interceptor";
 import { UserRoles } from "../users/enums/userRoles.enum";
 import IUser from "../users/interfaces/user.interface";
 import { BannersService } from "./banners.service";
-import { BannerDto } from "./dtos/banner.dto";
+import { BannerDto, PaginateBannersDto } from "./dtos/banner.dto";
 import { CreateBannerDto } from "./dtos/createBanner.dto";
 import { SearchBannerDto } from "./dtos/searchBanner.dto";
 import { UpdateBannerDto } from "./dtos/updateBanner.dto";
@@ -25,7 +25,8 @@ export class BannersController {
   }
 
   @Get("search")
-  async searchBanners(@Body() data: SearchBannerDto): Promise<IPaginatedBanners> {
+  @Serialize(PaginateBannersDto)
+  async searchBanners(@Query() data: SearchBannerDto): Promise<IPaginatedBanners> {
     return await this.bannersService.searchBanners(data);
   }
 

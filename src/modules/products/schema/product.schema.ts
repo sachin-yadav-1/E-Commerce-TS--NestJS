@@ -7,6 +7,7 @@ const ProductSchema = new Schema(
     costPrice: { type: Number, required: [true, "cost price is required."] },
     price: { type: Number, required: [true, "selling price is required."] },
     stock: { type: Number, default: 10 },
+    rating: { type: Number, default: 0 },
     categories: [{ type: Schema.Types.ObjectId, ref: "Category" }],
     createdBy: { type: Schema.Types.ObjectId, ref: "User" },
     updatedBy: { type: Schema.Types.ObjectId, ref: "User", default: null },

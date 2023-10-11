@@ -28,6 +28,9 @@ export class ProductDto {
   stock: number;
 
   @Expose()
+  rating: number;
+
+  @Expose()
   @Type(() => CategoryDto)
   categories: ICategory[];
 

@@ -1,6 +1,13 @@
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
+import { PaginateMetaDataDto } from "../../../common/dtos/paginateMetadata.dto";
+import { PaginateMetaData } from "../../../common/types/paginateMetadata.type";
+import { IBanner } from "../interfaces/banner.interface";
 
 export class BannerDto {
+  @Expose()
+  @Type(() => String)
+  _id: string;
+
   @Expose()
   name: string;
 
@@ -12,4 +19,14 @@ export class BannerDto {
 
   @Expose()
   redirectAt: string;
+}
+
+export class PaginateBannersDto {
+  @Expose()
+  @Type(() => PaginateMetaDataDto)
+  metadata: PaginateMetaData;
+
+  @Expose()
+  @Type(() => BannerDto)
+  data: IBanner[];
 }
