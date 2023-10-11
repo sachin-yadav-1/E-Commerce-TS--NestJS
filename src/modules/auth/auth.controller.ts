@@ -17,7 +17,7 @@ export class AuthController {
   @Serialize(UserDto)
   async login(@Req() req: any, @Res() res: Response): Promise<any> {
     const { token, ...user } = await this.authService.signInUser(req.user);
-    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: false });
+    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: process.env.NODE_ENV === "production" });
     res.status(200).send(user);
   }
 
@@ -25,7 +25,7 @@ export class AuthController {
   @Serialize(UserDto)
   async signupUser(@Body() data: SignupUserDto, @Res() res: Response): Promise<any> {
     const { token, ...user } = await this.authService.signupUser(data);
-    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: false });
+    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: process.env.NODE_ENV === "production" });
     res.status(201).send(user);
   }
 
@@ -37,8 +37,8 @@ export class AuthController {
   @UseGuards(GoogleAuthGuard)
   async googleOAuthHandler(@Req() req: any, @Res({ passthrough: true }) res: any): Promise<any> {
     const { token } = await this.authService.loginWithGoogle(req.user);
-    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: false });
-    res.status(200).redirect(`http://localhost:3000/logged-in`);
+    res.cookie("token", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000, secure: process.env.NODE_ENV === "production" });
+    res.status(200).redirect(`http://localhost:3000/profile`);
   }
 
   @Get("profile")
