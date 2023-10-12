@@ -1,0 +1,17 @@
+Authentication:
+1. Magic Link Login
+
+Notifications:
+1. Email
+2. SMS
+
+File Uploads:
+1. AWS S3
+
+Monitoring:
+1. Winston Logging
+
+Payment Gateway:
+1. Razorpay
+2. Stripe
+3. UPI
